@@ -3,6 +3,18 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 import os
 
+from flask import Flask
+from flask_cors import CORS
+from routes.resume_routes import resume_bp
+
+app = Flask(__name__)
+CORS(app)
+
+# Register resume blueprint
+app.register_blueprint(resume_bp, url_prefix='/api/resume')
+
+# ... rest of your existing code
+
 def create_app():
     # Load environment variables
     load_dotenv()
